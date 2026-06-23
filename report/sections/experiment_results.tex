@@ -1,52 +1,111 @@
-Los resultados obtenidos se presentan mediante gráficos generados automáticamente a partir de los datos recolectados.
+\subsection{Complejidad de los algoritmos}
+
+El algoritmo de fuerza bruta explora exhaustivamente todas las combinaciones posibles de prefijos para cada anime. Si un anime posee \(q_i\) capítulos, entonces existen \(q_i+1\) posibles decisiones para dicho anime. Como consecuencia, el número total de combinaciones crece exponencialmente respecto al número de animes.
+
+La complejidad temporal del algoritmo de fuerza bruta es exponencial, lo que limita su aplicación únicamente a instancias pequeñas. El consumo de memoria se encuentra asociado principalmente a la profundidad de la recursión utilizada por el backtracking.
+
+La primera heurística greedy construye una lista con todos los prefijos posibles y los ordena utilizando una relación entre satisfacción obtenida y costo de recursos consumidos. El criterio local utilizado consiste en maximizar la relación entre satisfacción obtenida y recursos consumidos, priorizando aquellos prefijos que entregan una mayor cantidad de satisfacción por unidad de tiempo y energía.
+
+La segunda heurística greedy selecciona para cada anime el prefijo que presenta la mejor relación local entre satisfacción y recursos utilizados. El criterio utilizado consiste en escoger la mejor alternativa individual para cada anime antes de construir la solución global.
+
+La solución mediante programación dinámica modela el problema utilizando estados asociados al número de animes considerados, el tiempo disponible y la energía restante. Esto permite garantizar la obtención de la solución óptima para las instancias que pueden resolverse dentro de los límites de memoria y tiempo.
+
+La Tabla \ref{tab:complejidad} resume las complejidades temporales teóricas de los algoritmos implementados.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c}
+\hline
+Algoritmo & Complejidad temporal \\
+\hline
+Fuerza bruta & Exponencial \\
+Greedy 1 & \(O(NQ \log(NQ))\) \\
+Greedy 2 & \(O(NQ)\) \\
+Programación dinámica & \(O(NME)\) \\
+\hline
+\end{tabular}
+\caption{Complejidad temporal de los algoritmos implementados.}
+\label{tab:complejidad}
+\end{table}
+
+Los resultados obtenidos se presentan mediante gráficos generados automáticamente a partir de los datos recolectados durante la ejecución de los distintos algoritmos sobre las instancias generadas.
+
+\subsection{Análisis del tiempo de ejecución}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../code/implementation/data/plots/tiempos.png}
-    \caption{Comparación de tiempos de ejecución}
+\centering
+\includegraphics[width=0.45\textwidth]{../code/implementation/data/plots/tiempos.png}
+\caption{Comparación de tiempos de ejecución}
 \end{figure}
 
-En la figura anterior se observa que el algoritmo de fuerza bruta crece rápidamente y deja de ser ejecutable para valores mayores de \(n = 25\). Esto es consistente con su complejidad exponencial.
+En la Figura 1 se observa el comportamiento temporal de los algoritmos implementados a medida que aumenta el tamaño de las instancias. El algoritmo de fuerza bruta presenta un crecimiento acelerado en sus tiempos de ejecución, dejando de ser práctico para valores superiores a \(n = 25\). Este comportamiento resulta consistente con la complejidad exponencial del algoritmo, ya que explora exhaustivamente todas las combinaciones posibles de prefijos.
 
-Los algoritmos greedy presentan tiempos extremadamente bajos y prácticamente constantes, lo que los hace altamente eficientes en términos computacionales.
+Los algoritmos Greedy 1 y Greedy 2 presentan tiempos de ejecución considerablemente menores. Ambos mantienen tiempos prácticamente constantes incluso para las instancias más grandes consideradas durante los experimentos, debido a que sus decisiones se basan en criterios locales y requieren únicamente operaciones de ordenamiento y recorridos lineales.
 
-Por otro lado, la programación dinámica presenta un crecimiento considerable en el tiempo de ejecución, alcanzando valores elevados en instancias grandes como \(n = 200\). Sin embargo, sigue siendo mucho más eficiente que la fuerza bruta.
+Por otro lado, la programación dinámica presenta un crecimiento considerable del tiempo de ejecución a medida que aumenta el tamaño de las instancias. Si bien el costo computacional aumenta para instancias grandes, el algoritmo continúa siendo mucho más eficiente que la fuerza bruta y mantiene la capacidad de obtener soluciones óptimas.
+
+En consecuencia, la programación dinámica ofrece un equilibrio adecuado entre tiempo de ejecución y calidad de solución, constituyéndose como una alternativa viable para resolver el problema en la práctica.
+
+\subsection{Calidad de las soluciones}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../code/implementation/data/plots/calidad.png}
-    \caption{Calidad de solución de algoritmos greedy respecto a programación dinámica}
+\centering
+\includegraphics[width=0.45\textwidth]{../code/implementation/data/plots/calidad.png}
+\caption{Calidad de solución de algoritmos greedy respecto a programación dinámica}
 \end{figure}
 
-En cuanto a la calidad de solución, se observa que los algoritmos greedy no siempre alcanzan el valor óptimo. En varios casos, especialmente para instancias grandes, la diferencia con la programación dinámica es significativa.
+La Figura 2 compara la calidad de las soluciones obtenidas por los algoritmos greedy respecto a la programación dinámica, la cual se considera como referencia óptima.
 
-Esto demuestra que las heurísticas greedy sacrifican optimalidad a cambio de eficiencia.
+Se observa que los algoritmos greedy no siempre alcanzan la solución óptima. En diversas instancias, particularmente en tamaños grandes, la diferencia respecto a la programación dinámica se vuelve significativa. Esto ocurre porque las heurísticas realizan decisiones locales que pueden impedir alcanzar la mejor solución global.
+
+El algoritmo Greedy 2 presenta un comportamiento ligeramente superior al Greedy 1 en varios casos, debido a que considera la mejor opción individual para cada anime antes de realizar la selección global. Sin embargo, ninguno de los enfoques greedy garantiza optimalidad.
+
+La programación dinámica, por su parte, coincide con la fuerza bruta, esto permitió validar experimentalmente la correctitud de la implementación de programación dinámica utilizando las instancias pequeñas donde ambos algoritmos pueden ejecutarse.
+
+\subsection{Uso de memoria}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../code/implementation/data/plots/memoria.png}
-    \caption{Uso de memoria de los algoritmos}
+\centering
+\includegraphics[width=0.45\textwidth]{../code/implementation/data/plots/memoria.png}
+\caption{Uso de memoria de los algoritmos}
 \end{figure}
 
-Respecto al uso de memoria, se observa que todos los algoritmos mantienen un consumo relativamente estable. No obstante, la programación dinámica presenta un mayor uso de memoria debido a la construcción de estructuras de almacenamiento para resolver el problema.
+Respecto al uso de memoria, se observa que todos los algoritmos mantienen un consumo relativamente estable para los tamaños considerados. Los algoritmos greedy requieren poca memoria adicional debido a la utilización de estructuras auxiliares simples.
 
-En general, existe un claro trade-off entre tiempo, memoria y calidad de solución:
+El algoritmo de fuerza bruta presenta un consumo moderado asociado a las llamadas recursivas del backtracking. Por otro lado, la programación dinámica requiere almacenar estructuras bidimensionales que representan los distintos estados del problema, lo que explica su mayor consumo de memoria.
+
+No obstante, el uso de memoria de la programación dinámica permanece dentro de límites razonables, permitiendo resolver instancias considerablemente mayores que aquellas abordables mediante fuerza bruta.
+
+No obstante, el uso de memoria de la programación dinámica permanece dentro de límites razonables, permitiendo resolver instancias considerablemente mayores que aquellas abordables mediante fuerza bruta.
+
+\subsection{Discusión}
+
+Los resultados experimentales evidencian la existencia de un compromiso entre tiempo de ejecución, consumo de memoria y calidad de solución. La fuerza bruta garantiza soluciones óptimas, pero su costo temporal la hace impracticable para instancias medianas y grandes.
+
+Los algoritmos greedy presentan tiempos de ejecución extremadamente bajos, aunque sacrifican calidad de solución debido a la naturaleza local de sus decisiones. Finalmente, la programación dinámica logra obtener soluciones óptimas manteniendo tiempos de ejecución razonables, convirtiéndose en la mejor alternativa para resolver el problema AniMarathon.
+
 \begin{itemize}
-    \item Fuerza bruta: óptimo pero ineficiente
-    \item Greedy: rápido pero no óptimo
-    \item Programación dinámica: balance entre ambos
+    \item \textbf{Fuerza bruta:} solución óptima, pero costo exponencial.
+    \item \textbf{Greedy:} alta velocidad de ejecución, pero sin garantía de optimalidad.
+    \item \textbf{Programación dinámica:} equilibrio entre eficiencia y calidad de solución.
 \end{itemize}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{c|c|c|c|c}
-n & Brute & Greedy1 & Greedy2 & DP \\
 \hline
-5 & 0.004 & 0.003 & 0.0007 & 1.1 \\
-10 & 0.015 & 0.004 & 0.001 & 2.5 \\
-20 & 0.04 & 0.005 & 0.0016 & 1.3 \\
-50 & - & 0.02 & 0.004 & 12.0 \\
-200 & - & 0.10 & 0.01 & 100+ \\
+$n$ & Brute Force & Greedy 1 & Greedy 2 & DP \\
+\hline
+5   & 0.0088 & 0.0050 & 0.0012 & 1.2815 \\
+10  & 0.0112 & 0.0037 & 0.0010 & 1.1936 \\
+15  & 0.1247 & 0.0054 & 0.0014 & 1.7014 \\
+20  & 0.0471 & 0.0067 & 0.0019 & 1.1802 \\
+30  & --- & 0.0130 & 0.0028 & 8.9891 \\
+50  & --- & 0.0273 & 0.0053 & 14.1875 \\
+80  & --- & 0.0212 & 0.0057 & 14.4982 \\
+120 & --- & 0.0616 & 0.0090 & 43.8524 \\
+200 & --- & 0.0732 & 0.0122 & 72.0294 \\
+\hline
 \end{tabular}
-\caption{Resumen de tiempos promedio (ms)}
+\caption{Tiempo promedio de ejecución de los algoritmos (ms).}
 \end{table}
