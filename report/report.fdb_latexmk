@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber report"] 0 "report.bcf" "report.bbl" "report" 1782181047.76627 -1
+["biber report"] 0 "report.bcf" "report.bbl" "report" 1782181870.1439 -1
   "references.bib" 1781569452 2235 085c5b26f2f30d734bd4df514e7a1ee9 ""
-  "report.bcf" 1782181047 108551 66f4bafccad88a84f77b14c7778652d8 "pdflatex"
+  "report.bcf" 1782181869 108551 66f4bafccad88a84f77b14c7778652d8 "pdflatex"
   (generated)
   "report.bbl"
   "report.blg"
   (rewritten before read)
-["pdflatex"] 1782181044.67392 "c:/Users/marti/Documents/INF221-2026-1-TAREA-2-main/report/report.tex" "report.pdf" "report" 1782181047.76701 0
+["pdflatex"] 1782181866.35888 "c:/Users/marti/Documents/INF221-2026-1-TAREA-2-main/report/report.tex" "report.pdf" "report" 1782181870.14464 0
   "../code/implementation/data/plots/calidad.png" 1781659271 37572 aa34b5d2d3e790a727e3e2d1df2697a9 ""
   "../code/implementation/data/plots/memoria.png" 1781659271 33735 62ecaeb4d497a61696e87ba0ffcd32c1 ""
   "../code/implementation/data/plots/tiempos.png" 1781659271 32670 69b09475dd4a79a58e11904447447409 ""
@@ -306,14 +306,14 @@
   "author.tex" 1781645001 512 22a28fdc90704aa3a7203fc99d2a111f ""
   "c:/Users/marti/Documents/INF221-2026-1-TAREA-2-main/report/report.tex" 1782178158 987 6e79687b4b808df7402dea2c8670f9ce ""
   "preamble.tex" 1781569452 2163 4b0cc777241a9fa0f82b663d831cc656 ""
-  "report.aux" 1782181047 2622 07c3b8ef890475f0b2bc5b6672918f24 "pdflatex"
+  "report.aux" 1782181869 2622 07c3b8ef890475f0b2bc5b6672918f24 "pdflatex"
   "report.bbl" 1781569452 486 76d65a242ec496c9b4361af646ff12cb "biber report"
-  "report.out" 1782181047 1281 402e8348b0d6c2793d988dc11b757885 "pdflatex"
-  "report.run.xml" 1782181047 2319 85416a11bf768be6a1e5b1dccfd5e02c "pdflatex"
+  "report.out" 1782181869 1281 402e8348b0d6c2793d988dc11b757885 "pdflatex"
+  "report.run.xml" 1782181869 2319 85416a11bf768be6a1e5b1dccfd5e02c "pdflatex"
   "report.tex" 1782178158 987 6e79687b4b808df7402dea2c8670f9ce ""
   "sections/conclusions.tex" 1782180840 982 daf048de57df6effe77d931253577fc4 ""
-  "sections/experiment_intro.tex" 1782178304 1086 00333054c841364d8da1d000cf172d80 ""
-  "sections/experiment_results.tex" 1782181040 7910 14cf35da1fbfa1ecb76ae9b33cafc199 ""
+  "sections/experiment_intro.tex" 1782181865 1088 b43d904b781aa34c928fbc398d83908c ""
+  "sections/experiment_results.tex" 1782181828 7702 e66b429b34a27bf7596ed6daeebede09 ""
   (generated)
   "report.aux"
   "report.bcf"
